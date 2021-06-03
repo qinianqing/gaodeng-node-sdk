@@ -22,23 +22,6 @@ class BanuSdk {
         this.host = env === 'test' ? 'https://apigw-test.goldentec.com' : 'https://apigw.goldentec.com';
     }
 
-    formatPublicParams(args) {
-        let keys = Object.keys(args)
-        keys = keys.sort() //参数名ASCII码从小到大排序（字典序）；
-        let newArgs = {}
-        keys.forEach(function (key) {
-            if (args[key] != "" && args[key] != 'undefined') {  //如果参数的值为空不参与签名；
-                newArgs[key] = args[key]  //参数名区分大小写；
-            }
-        })
-        let string = ''
-        for (let k in newArgs) {
-            string += '|' + k + '=' + newArgs[k]
-        }
-        string = string.substr(1)
-        return string
-    }
-
     formatParams(args, join) {
         let keys = Object.keys(args)
         if (join === '|') { keys = keys.sort() }
