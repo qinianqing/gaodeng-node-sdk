@@ -43,7 +43,7 @@ class BanuSdk {
         const timeStamp = Math.round(new Date().getTime() / 1000).toString(); //毫秒级时间戳
         const nonce = Math.random().toFixed(6).slice(-6); // 6位随机数字
         const publicParams = {
-            algorithm: 'HMAC-SHA256',
+            algorithm: this.algorithm,
             appkey: this.appKey,
             nonce: nonce,
             timestamp: timeStamp
